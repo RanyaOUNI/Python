@@ -1,13 +1,13 @@
 #---------- INTEGERS FROM 0 TO 150 -----------
 
-#for i in range(0,151):
-    #print(i)
+for i in range(0,151):
+    print(i)
 
 #---------- MULTIPLES OF FIVE ----------------
 
-#for i in range(5,5001):
-    #if (i%5==0):
-        #print(i)
+for i in range(5,5001):
+    if (i%5==0):
+        print(i)
 
 #----------- COUNTING THE DOJO WAY -----------
 
