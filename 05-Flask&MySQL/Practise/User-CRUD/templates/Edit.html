@@ -8,29 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Add A New User</h1>
+        <h1>Edit User</h1>
         <div class="card shadow p-2 m-2">
-            <form action="/users/Create" method="post">
+            <form action="/users/{{user.id}}/update" method="post">
                 <div class="form-group">
                     <label for="">First Name</label>
-                    <input type="text" class="form-control" name="first_name">
+                    <input type="text" class="form-control" name="first_name" value="{{user.first_name}}">
                 </div>
                 <div class="form-group">
                     <label for="">Last Name</label>
-                    <input type="text" class="form-control" name="last_name">
+                    <input type="text" class="form-control" name="last_name" value="{{user.last_name}}">
                 </div>
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="text" class="form-control" name="email">
+                    <input type="text" class="form-control" name="email" value="{{user.email}}">
                 </div>
                 <br>
-                <input type="submit" value="Create" class="btn btn-success btn-lg">
+                <input type="submit" value="Update" href="/users/<int:user_id>" class="btn btn-success btn-lg">
             </form>
         </div>
-        <a href="/" class="">Home</a>
+        <a href="/users/{{user.id}}" class="">Show User</a>
+
 
     </div>
-
     
 </body>
 </html>

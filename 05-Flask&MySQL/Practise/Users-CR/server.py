@@ -10,7 +10,7 @@ def dashboard():
 
 @app.route('/users/new')
 def new_user():
-     return render_template('Create.html')
+    return render_template('Create.html')
 
 @app.route('/users/Create',methods=['POST'])
 def create_user():

@@ -1,7 +1,7 @@
 
 from pymysqlconnection import connectToMySQL
-class User: 
 
+class User: 
     def __init__(self,data_dict):
         self.id = data_dict['id']
         self.first_name = data_dict['first_name']
@@ -18,34 +18,49 @@ class User:
         for row in results:
             user = cls(row)
             all_users.append(user)
-        print(all_users)
         return all_users
 
     @classmethod
     def create_user(cls,data_dict):
-        query = """
-                INSERT INTO users (first_name,last_name,email)
-                VALUES (%(first_name)s,%(last_name)s,%(email)s);
-        """
-        result = connectToMySQL("users_cr").query_db(query,data_dict)
-        print(result)
 
-        return None
+        query = """INSERT INTO users (first_name,last_name,email)
+                    VALUES (%(first_name)s,%(last_name)s,%(email)s);"""
+        
+        result = connectToMySQL("users_cr").query_db(query,data_dict)
+        
+        return result
 
     @classmethod
     def show(cls, data_dict):
-        query = """
-                    UPDATE users SET first_name  = %(first_name)s, last_name = %(last_name)s,
-                    email= %(email)s;
-                """
+
+        query = """UPDATE users SET first_name  = %(first_name)s, last_name = %(last_name)s,
+                    email= %(email)s;"""
+        
         return connectToMySQL("users_cr").query_db(query, data_dict)
 
     
     @classmethod
     def get_one_by_id(cls,data_dict):
-        query = """
-                    SELECT * FROM users WHERE id = %(id)s
-                """
+
+        query = """SELECT * FROM users WHERE id = %(id)s"""
+        
         results = connectToMySQL("users_cr").query_db(query,data_dict)
+        user  = cls(results[0])
+        return user
+
+    @classmethod
+    def update_user(cls,data_dict):
+        query = """UPDATE users 
+                SET first_name=%(first_name)s,last_name=%(last_name)s,email=%(email)s 
+                WHERE id = %(id)s;"""
+        return connectToMySQL('users_cr').query_db(query,data_dict)
+
+
+    @classmethod
+    def delete(cls,data_dict):
+        query  = "DELETE FROM users WHERE id = %(id)s;"
+        result  = connectToMySQL('users_cr').query_db(query,data_dict)
         return None
+    
+
 
