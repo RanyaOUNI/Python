@@ -32,7 +32,9 @@
                     <td> 
                         <a href="/users/{{user.id}}" class="btn btn-warning">Show</a>
                         <a href="/users/{{user.id}}/edit" class="btn btn-warning">Edit</a>
-                        <a href="/users/{{user.id}}/delete" class="btn btn-warning">Delete</a>
+                        <form action="/users/{{user.id}}/destroy" method="post">
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}

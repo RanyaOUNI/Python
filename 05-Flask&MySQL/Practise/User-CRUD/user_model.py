@@ -57,10 +57,11 @@ class User:
 
 
     @classmethod
-    def delete(cls,data_dict):
+    def destroy(cls,data_dict):
         query  = "DELETE FROM users WHERE id = %(id)s;"
-        result  = connectToMySQL('users_cr').query_db(query,data_dict)
-        return None
-    
+        return connectToMySQL('users_cr').query_db(query,data_dict)
+        
+
+
 
 

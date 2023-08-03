@@ -62,10 +62,9 @@ def update_user(user_id):
 
 # --------------- Delete a user ---------------
 
-@app.route('/users/<int:user_id>/delete')
-def delete(user_id):
-    data_dict = {'id':user_id}
-    User.delete(user_id)
+@app.route('/users/<int:user_id>/destroy', methods=['POST'])
+def destroy(user_id):
+    User.destroy({'id':user_id})
     return redirect('/')
 
 
