@@ -29,11 +29,11 @@
                     <td>{{user.first_name}}</td>
                     <td>{{user.last_name}}</td>
                     <td>{{user.email}}</td>
-                    <td> 
+                    <td class=" d-flex justify-content-around">
                         <a href="/users/{{user.id}}" class="btn btn-warning">Show</a>
                         <a href="/users/{{user.id}}/edit" class="btn btn-warning">Edit</a>
                         <form action="/users/{{user.id}}/destroy" method="post">
-                            <input type="submit" value="Delete" class="btn btn-danger">
+                            <input type="submit" value="Delete" class="btn btn-warning">
                         </form>
                     </td>
                 </tr>
